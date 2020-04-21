@@ -10,67 +10,110 @@ import org.openqa.selenium.interactions.Actions;
 
 public class Player {
 	
-//	public String name;
+//	public String playerOne;
 //	public String passingYards;
 // public int passingTouchdowns;
 //	public int interceptions;
 //	public int rushingYards;
 //	public int lostFumbles;
 	
-//	public Player( String passingYards) {
-//		this.passingYards = passingYards;
+//	public Player( String playerone) {
+//		this.playerOne = playerOne;
 //	}
 	
 //	passingYards = 0;
+	String player;
+	String playerCard;
+	String passingYards;
+	String passingTouchdowns;
+	String picks;
+	String rushYards;
+	String lostFumbles;
+	String fantasyPoints;
 	
 	
 	public void getStats() {
 		
-		//prompt player one
+		//prompt player input
 		System.out.println("Choose player: ");
-		Scanner in = new Scanner(System.in);
-		String playerOne = in.nextLine();
-		//prompt player two
-//		System.out.println("Choose player Two: ");
-//		Scanner inTwo = new Scanner(System.in);
-//		String playerTwo = inTwo.nextLine();
+		Scanner getPlayerName = new Scanner(System.in);
+		player = getPlayerName.nextLine();
+		
+		
 		
 		//open driver
 		System.setProperty("webdriver.chrome.driver","chromedriver");		
 		WebDriver driver = new ChromeDriver();
 		driver.get("https://fantasy.nfl.com/research/scoringleaders?position=1");
 		
+	
+		
 		//player one get stats	    
 	    Actions action = new Actions(driver);
 	    WebElement element = driver.findElement(By.id("searchQuery"));
 	    action.doubleClick(element).perform();
 	    
-        driver.findElement(By.id("searchQuery")).sendKeys(playerOne);
+        driver.findElement(By.id("searchQuery")).sendKeys(player);
 	    driver.findElement(By.name("jSubmit")).click();
+	    
+	    
 	    
 	    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	    
-	    System.out.println(playerOne + ":");
-	    var playerOnePassingYards = driver.findElement(By.className("statId-5")).getText();
-	    System.out.println("passing yards: " + playerOnePassingYards);
 	    
 	    
-	    var playerOnePassingTouchdowns = driver.findElement(By.className("statId-6")).getText();
-	    System.out.println("passing touchdowns" + playerOnePassingTouchdowns);
+	    //get player name
+	    playerCard = driver.findElement(By.className("playerNameFull")).getText();
+	    		    	    
+	    
+	    System.out.println(player + ":");
+	    passingYards = driver.findElement(By.className("statId-5")).getText();
+//	    int totalPassYards = Integer.parseInt(passingYards);
+	    System.out.println("passing yards: " + passingYards);
+	    
+	    
+	     passingTouchdowns = driver.findElement(By.className("statId-6")).getText();
+	    System.out.println("passing touchdowns: " + passingTouchdowns);
 
-	    var playerOnePicks = driver.findElement(By.className("statId-7")).getText();
-	    System.out.println("picks: " + playerOnePicks);
+	     picks = driver.findElement(By.className("statId-7")).getText();
+	    System.out.println("picks: " + picks);
 
-	    var playerOneRushYards = driver.findElement(By.className("statId-14")).getText();
-	    System.out.println("rushing yards: " + playerOneRushYards);
+	     rushYards = driver.findElement(By.className("statId-14")).getText();
+//	     int Rushing = Integer.parseInt(rushYards);
+	    System.out.println("rushing yards: " + rushYards);
 
-	    var playerOneLostFumbles = driver.findElement(By.className("statId-30")).getText();
-	    System.out.println("lost fumbles: " + playerOneLostFumbles);
+	     lostFumbles = driver.findElement(By.className("statId-30")).getText();
+	    System.out.println("lost fumbles: " + lostFumbles);
 
-	    var playerOneFantasyPoints = driver.findElement(By.className("playerSeasonTotal")).getText();
-	    System.out.println("total fantasy points: " + playerOneFantasyPoints);
+	    fantasyPoints = driver.findElement(By.className("playerSeasonTotal")).getText();
+	    System.out.println("total fantasy points: " + fantasyPoints);
+	    
+	    
+	    System.out.println("-----------------------");
 	    
 	    	
+	}
+	
+	
+	
+	
+//	int p2Rushing = Integer.parseInt(rushYards);
+	
+	
+	
+	
+	
+	public void compareStats() {
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 				 
 

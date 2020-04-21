@@ -4,7 +4,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class OpenSite {
 	
 	public void openWebSite() {
-		//go to google
+		//go to fantasy football site
 	  System.setProperty("webdriver.chrome.driver","chromedriver");
 		
 	  WebDriver driver = new ChromeDriver();
