@@ -16,10 +16,10 @@ public class FirstTest {
 //		start.openWebSite();
 
 		
-		playerOne p1 = new playerOne();
+		Player p1 = new Player();
 		p1.getStats();
 					
-		playerTwo p2 = new playerTwo();
+		Player p2 = new Player();
 		p2.getStats();
 		
 		//logic tests

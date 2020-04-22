@@ -48,10 +48,10 @@ public class Player {
 		
 	
 		
-		//player one get stats	    
-	    Actions action = new Actions(driver);
-	    WebElement element = driver.findElement(By.id("searchQuery"));
-	    action.doubleClick(element).perform();
+		//player get stats	    
+//	    Actions action = new Actions(driver);
+//	    WebElement element = driver.findElement(By.id("searchQuery"));
+//	    action.doubleClick(element).perform();
 	    
         driver.findElement(By.id("searchQuery")).sendKeys(player);
 	    driver.findElement(By.name("jSubmit")).click();
