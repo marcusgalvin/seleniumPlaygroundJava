@@ -12,8 +12,8 @@ public class FirstTest {
 	public static void main(String[] args) {
 		
 		
-//		OpenSite start = new OpenSite();
-//		start.openWebSite();
+		OpenSite start = new OpenSite();
+		start.openWebSite();
 
 		
 		Player p1 = new Player();
@@ -21,6 +21,10 @@ public class FirstTest {
 					
 		Player p2 = new Player();
 		p2.getStats();
+		
+		
+//		Team t1 = new Team();
+//		t1.getTeamStats();
 		
 		//logic tests
 		
@@ -38,16 +42,19 @@ public class FirstTest {
 		} if(p1Rushing == p2Rushing) {
 			System.out.println("the two players are tied");
 		}
+		
+		
+		
 
 		
 
-		if(p1Passing > p2Passing) {
-			System.out.println(p1.player + " " + "has more total passing yards");
-		} if(p2Passing > p1Passing) {
-			System.out.println(p2.player + " " + "has more total passing yards");
-		} if(p1Passing == p2Passing) {
-			System.out.println("the two players are tied");
-		}
+//		if(p1Passing > p2Passing) {
+//			System.out.println(p1.player + " " + "has more total passing yards");
+//		} if(p2Passing > p1Passing) {
+//			System.out.println(p2.player + " " + "has more total passing yards");
+//		} if(p1Passing == p2Passing) {
+//			System.out.println("the two players are tied");
+//		}
 
 		
 		

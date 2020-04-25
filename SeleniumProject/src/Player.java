@@ -1,4 +1,6 @@
 import java.util.Scanner;
+//import default.OpenSite.java;
+
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -31,6 +33,8 @@ public class Player {
 	String lostFumbles;
 	String fantasyPoints;
 	
+	String year;
+	
 	
 	public void getStats() {
 		
@@ -40,28 +44,26 @@ public class Player {
 		player = getPlayerName.nextLine();
 		
 		
-		
+		//prompt year input
+//		System.out.println("Choose Year: ");
+//		Scanner getYear = new Scanner(System.in);
+//		year = getYear.nextLine();
+				
 		//open driver
 		System.setProperty("webdriver.chrome.driver","chromedriver");		
 		WebDriver driver = new ChromeDriver();
 		driver.get("https://fantasy.nfl.com/research/scoringleaders?position=1");
 		
-	
 		
-		//player get stats	    
-//	    Actions action = new Actions(driver);
-//	    WebElement element = driver.findElement(By.id("searchQuery"));
-//	    action.doubleClick(element).perform();
-	    
+
+        driver.findElement(By.id("searchQuery")).click();;
+        
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		
         driver.findElement(By.id("searchQuery")).sendKeys(player);
 	    driver.findElement(By.name("jSubmit")).click();
 	    
-	    
-	    
-	    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-	    
-	    
-	    
+		    
 	    //get player name
 	    playerCard = driver.findElement(By.className("playerNameFull")).getText();
 	    		    	    
