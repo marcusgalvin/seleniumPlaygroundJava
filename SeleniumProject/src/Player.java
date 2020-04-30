@@ -1,5 +1,8 @@
 import java.util.Scanner;
 //import default.OpenSite.java;
+//import org.openqa.selenium.WebDriver;
+//import org.openqa.selenium.chrome.ChromeDriver;
+
 
 import java.util.concurrent.TimeUnit;
 
@@ -32,8 +35,23 @@ public class Player {
 	String rushYards;
 	String lostFumbles;
 	String fantasyPoints;
-	
 	String year;
+	
+	public Player(String player, String playerCard, String passingYards, String passingTouchdowns, String picks,
+			String rushYards, String lostFumbles, String fantasyPoints, String year) {
+		super();
+		this.player = player;
+		this.playerCard = playerCard;
+		this.passingYards = passingYards;
+		this.passingTouchdowns = passingTouchdowns;
+		this.picks = picks;
+		this.rushYards = rushYards;
+		this.lostFumbles = lostFumbles;
+		this.fantasyPoints = fantasyPoints;
+		this.year = year;
+	}
+
+
 	
 	
 	public void getStats() {

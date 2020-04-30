@@ -12,14 +12,14 @@ public class FirstTest {
 	public static void main(String[] args) {
 		
 		
-		OpenSite start = new OpenSite();
-		start.openWebSite();
+//		OpenSite start = new OpenSite(null, null, null, null, null, null, null, null, null);
+//		start.openWebSite();
 
 		
-		Player p1 = new Player();
+		Player p1 = new Player(null, null, null, null, null, null, null, null, null);
 		p1.getStats();
 					
-		Player p2 = new Player();
+		Player p2 = new Player(null, null, null, null, null, null, null, null, null);
 		p2.getStats();
 		
 		
