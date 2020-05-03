@@ -23,8 +23,8 @@ public class FirstTest {
 		p2.getStats();
 		
 		
-//		Team t1 = new Team();
-//		t1.getTeamStats();
+		Team t1 = new Team();
+		t1.getTeamStats();
 		
 		//logic tests
 		
