@@ -15,18 +15,7 @@ import org.openqa.selenium.interactions.Actions;
 
 public class Player {
 	
-//	public String playerOne;
-//	public String passingYards;
-// public int passingTouchdowns;
-//	public int interceptions;
-//	public int rushingYards;
-//	public int lostFumbles;
-	
-//	public Player( String playerone) {
-//		this.playerOne = playerOne;
-//	}
-	
-//	passingYards = 0;
+
 	String player;
 	String playerCard;
 	String passingYards;
