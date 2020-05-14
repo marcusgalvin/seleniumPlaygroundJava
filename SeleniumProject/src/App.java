@@ -9,13 +9,16 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import com.luv2code.hibernate.demo.entity.Players;
 
 
-public class FirstTest {
+public class App {
 
 	public static void main(String[] args) {
 		
 				
-		Players p1 = new Players();
-		p1.getStats();
+
+		
+		Scraper scrape = new Scraper();
+		scrape.getStats();
+		scrape.saveDataWithHibernate();
 		
 					
 //		Players p2 = new Players();
@@ -54,26 +57,6 @@ public class FirstTest {
 //		} if(p1Passing == p2Passing) {
 //			System.out.println("the two players are tied");
 //		}
-
-		
-		
-		
-
-		
-		
-
-	    
-
-	    
-
-	    
-
-	    
-		
-		
-		
-
-		
 		
 		
 	}

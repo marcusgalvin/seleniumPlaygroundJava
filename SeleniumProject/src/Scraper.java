@@ -1,21 +1,24 @@
 import java.util.Scanner;
-//import default.OpenSite.java;
-//import org.openqa.selenium.WebDriver;
-//import org.openqa.selenium.chrome.ChromeDriver;
-
-
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+import com.luv2code.hibernate.demo.entity.Players;
+import com.luv2code.hibernate.demo.entity.*;
 
 
-public class Player {
+public class Scraper {
 	
-
 	String player;
 	String playerCard;
 	String passingYards;
@@ -26,9 +29,8 @@ public class Player {
 	String fantasyPoints;
 	String year;
 	
-	public Player(String player, String playerCard, String passingYards, String passingTouchdowns, String picks,
+	public void Player(String player, String playerCard, String passingYards, String passingTouchdowns, String picks,
 			String rushYards, String lostFumbles, String fantasyPoints, String year) {
-		super();
 		this.player = player;
 		this.playerCard = playerCard;
 		this.passingYards = passingYards;
@@ -39,10 +41,8 @@ public class Player {
 		this.fantasyPoints = fantasyPoints;
 		this.year = year;
 	}
-
-
 	
-	
+			
 	public void getStats() {
 		
 		//prompt player input
@@ -50,48 +50,39 @@ public class Player {
 		Scanner getPlayerName = new Scanner(System.in);
 		player = getPlayerName.nextLine();
 		
-		
-		//prompt year input
-//		System.out.println("Choose Year: ");
-//		Scanner getYear = new Scanner(System.in);
-//		year = getYear.nextLine();
-				
-		//open driver
+		//web driver	
 		System.setProperty("webdriver.chrome.driver","chromedriver");		
 		WebDriver driver = new ChromeDriver();
+
+		final String Url = "https://fantasy.nfl.com/research/scoringleaders?position=1";		
+		driver.get(Url);
+		
 		driver.get("https://fantasy.nfl.com/research/scoringleaders?position=1");
 		
-		
-
-        driver.findElement(By.id("searchQuery")).click();;
-        
+		//search player
+        driver.findElement(By.id("searchQuery")).click();;       
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		
         driver.findElement(By.id("searchQuery")).sendKeys(player);
 	    driver.findElement(By.name("jSubmit")).click();
 	    
 		    
 	    //get player name
 	    playerCard = driver.findElement(By.className("playerNameFull")).getText();
-	    		    	    
-	    
+	    		    	    	    
 	    System.out.println(player + ":");
 	    passingYards = driver.findElement(By.className("statId-5")).getText();
-//	    int totalPassYards = Integer.parseInt(passingYards);
 	    System.out.println("passing yards: " + passingYards);
-	    
-	    
-	     passingTouchdowns = driver.findElement(By.className("statId-6")).getText();
+	    	    
+	    passingTouchdowns = driver.findElement(By.className("statId-6")).getText();
 	    System.out.println("passing touchdowns: " + passingTouchdowns);
 
-	     picks = driver.findElement(By.className("statId-7")).getText();
+	    picks = driver.findElement(By.className("statId-7")).getText();
 	    System.out.println("picks: " + picks);
 
-	     rushYards = driver.findElement(By.className("statId-14")).getText();
-//	     int Rushing = Integer.parseInt(rushYards);
+	    rushYards = driver.findElement(By.className("statId-14")).getText();
 	    System.out.println("rushing yards: " + rushYards);
 
-	     lostFumbles = driver.findElement(By.className("statId-30")).getText();
+	    lostFumbles = driver.findElement(By.className("statId-30")).getText();
 	    System.out.println("lost fumbles: " + lostFumbles);
 
 	    fantasyPoints = driver.findElement(By.className("playerSeasonTotal")).getText();
@@ -100,43 +91,47 @@ public class Player {
 	    
 	    System.out.println("-----------------------");
 	    
+	    //close driver
+	    driver.quit();
+	    
 	    	
 	}
 	
 	
+public void saveDataWithHibernate() {
+	//create session factory
+		SessionFactory factory = new Configuration()
+				.configure("hibernate.cfg.xml")
+				.addAnnotatedClass(Players.class)
+				.buildSessionFactory();
+		
+		//create session
+		Session session = factory.getCurrentSession();
+		
+		try {
+			//create player object
+			System.out.println("Creating a new player object...");
+			Players tempPlayer = new Players(playerCard, passingYards, passingTouchdowns, picks, rushYards, 
+					lostFumbles, fantasyPoints);
+			
+			//start a transaction
+			session.beginTransaction();	
+			
+			//save player object
+			System.out.println("Saving the player...");
+			session.save(tempPlayer);
+			
+			//commit transaction
+			session.getTransaction().commit();
+			System.out.println("Done!");
+			
+			
+			
+			}
+		finally {
+			factory.close();
+		}
 	
-	
-//	int p2Rushing = Integer.parseInt(rushYards);
-	
-	
-	
-	
-	
-	public void compareStats() {
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	}
-				 
-
-
 	
-	
-	
-	
-	
-		
-	
-	
-		
-		
-		
-
 }
