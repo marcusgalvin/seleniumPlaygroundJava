@@ -15,7 +15,7 @@ public class App {
 		
 				
 
-		
+		//scrape
 		Scraper scrape = new Scraper();
 		scrape.getStats();
 		scrape.saveDataWithHibernate();

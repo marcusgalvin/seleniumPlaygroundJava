@@ -71,22 +71,57 @@ public class Scraper {
 	    		    	    	    
 	    System.out.println(player + ":");
 	    passingYards = driver.findElement(By.className("statId-5")).getText();
-	    System.out.println("passing yards: " + passingYards);
+	    
+	    if(passingYards == "-") {
+	    	System.out.print("not found");
+	    } else {
+	    	System.out.println("passing yards: " + passingYards);
+
+	    }
 	    	    
 	    passingTouchdowns = driver.findElement(By.className("statId-6")).getText();
-	    System.out.println("passing touchdowns: " + passingTouchdowns);
+	    if(passingTouchdowns == "-") {
+	    	System.out.print("not found");
+	    } else {
+		    System.out.println("passing touchdowns: " + passingTouchdowns);
+
+	    }
+	    
 
 	    picks = driver.findElement(By.className("statId-7")).getText();
-	    System.out.println("picks: " + picks);
+	    if(picks == "-") {
+	    	System.out.print("not found");
+	    } else {
+	    	System.out.println("picks: " + picks);
+	    }
+	    
+	    
 
 	    rushYards = driver.findElement(By.className("statId-14")).getText();
-	    System.out.println("rushing yards: " + rushYards);
+	    
+	    if(rushYards == "-") {
+	    	System.out.print("not found");
+	    } else {
+	    	System.out.println("rushing yards: " + rushYards);
+	    }
+	    
 
 	    lostFumbles = driver.findElement(By.className("statId-30")).getText();
-	    System.out.println("lost fumbles: " + lostFumbles);
+	    if(lostFumbles == "-") {
+	    	System.out.print("not found");
+	    } else {
+		    System.out.println("lost fumbles: " + lostFumbles);
+
+	    }
 
 	    fantasyPoints = driver.findElement(By.className("playerSeasonTotal")).getText();
-	    System.out.println("total fantasy points: " + fantasyPoints);
+	    
+	    if(fantasyPoints == "-") {
+	    	System.out.print("not found");
+	    } else {
+	    	System.out.println("total fantasy points: " + fantasyPoints);
+
+	    }
 	    
 	    
 	    System.out.println("-----------------------");
