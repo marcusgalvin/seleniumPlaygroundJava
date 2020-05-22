@@ -21,7 +21,7 @@ public class App {
 		scrape.saveDataWithHibernate();
 		
 					
-//		Players p2 = new Players();
+		Players p2 = new Players();
 //		p2.getStats();
 		
 		
